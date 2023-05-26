@@ -6,6 +6,13 @@ class PizzaCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF090C22),
+        scaffoldBackgroundColor: Color(0xFF090C22),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF090C22)
+        )
+      ),
       home: InputPage(),
     );
   }
@@ -24,14 +31,8 @@ class _InputPageState extends State<InputPage> {
         title: Text('Pizza calculator'),
       ),
       body: Center(
-        child: Text('Body Text'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('FBA');
-        },
-        child: Icon(Icons.add),
-      ),
+        child: Text('there be pizzas')
+      )
     );
   }
 }
