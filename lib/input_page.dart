@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'info_card.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -20,45 +21,20 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(10))),
+                    child: InfoCard(cardColor: cardColor),
                   ),
                   Expanded(
-                    child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(10))),
+                    child: InfoCard(cardColor: cardColor),
                   )
                 ],
               ),
             ),
-            Expanded(
-                child: Container(
-                    margin: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(10)))),
+            Expanded(child: InfoCard(cardColor: cardColor)),
             Expanded(
               child: Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                  Expanded(
-                    child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(10))),
-                  )
+                  Expanded(child: InfoCard(cardColor: cardColor)),
+                  Expanded(child: InfoCard(cardColor: cardColor))
                 ],
               ),
             ),
@@ -66,3 +42,4 @@ class _InputPageState extends State<InputPage> {
         ));
   }
 }
+
