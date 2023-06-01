@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const labelTextStyle = TextStyle(fontSize: 18, color: Colors.grey);
+
 class FlavourOption extends StatelessWidget {
   const FlavourOption({@required this.icon, @required this.text});
 
@@ -15,7 +17,7 @@ class FlavourOption extends StatelessWidget {
         SizedBox(height: 15),
         Text(
           text,
-          style: TextStyle(fontSize: 18, color: Colors.grey),
+          style: labelTextStyle,
         )
       ],
     );

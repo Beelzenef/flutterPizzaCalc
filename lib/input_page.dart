@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'flavour_option.dart';
-import 'info_card.dart';
+import 'widgets/flavour_option.dart';
+import 'widgets/info_card.dart';
 
 const cardColor = Color(0xFF1D1E33);
 
