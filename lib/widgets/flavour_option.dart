@@ -5,7 +5,7 @@ const labelTextStyle = TextStyle(fontSize: 18, color: Colors.grey);
 class FlavourOption extends StatelessWidget {
   const FlavourOption({@required this.icon, @required this.text});
 
-  final IconData icon;
+  final String icon;
   final String text;
 
   @override
@@ -13,7 +13,7 @@ class FlavourOption extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, size: 80),
+        Text(icon, style: TextStyle(fontSize: 70)),
         SizedBox(height: 15),
         Text(
           text,
