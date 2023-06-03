@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/flavour_option.dart';
 import 'widgets/info_card.dart';
-
-const cardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-
-const bottomContainerColor = Colors.redAccent;
-const bottomContainerHeight = 80.0;
+import '../constants.dart';
 
 enum Flavours { Margarita, Pineapple }
 
@@ -17,6 +12,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Flavours flavourSelected;
+  int sizeSelected = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +21,7 @@ class _InputPageState extends State<InputPage> {
           title: Text('Pizza calculator'),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -37,8 +34,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       cardColor: flavourSelected == Flavours.Margarita
-                          ? cardColor
-                          : inactiveCardColor,
+                          ? kCardColor
+                          : kInactiveCardColor,
                       child: FlavourOption(icon: '🧀', text: 'MARGARITA'),
                     ),
                   ),
@@ -50,8 +47,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       cardColor: flavourSelected == Flavours.Pineapple
-                          ? cardColor
-                          : inactiveCardColor,
+                          ? kCardColor
+                          : kInactiveCardColor,
                       child: FlavourOption(icon: '🍍', text: 'PINEAPPLE'),
                     ),
                   )
@@ -60,25 +57,58 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
                 child: InfoCard(
-              cardColor: cardColor,
-              child: Container(),
-            )),
+                    cardColor: kCardColor,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'SIZE',
+                            style: kLabelTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                sizeSelected.toString(),
+                                style: kNumberTextStyle,
+                              ),
+                              Text(
+                                'cm',
+                                style: kLabelTextStyle,
+                              )
+                            ],
+                          ),
+                          Slider(
+                              value: sizeSelected.toDouble(),
+                              min: kMinSize,
+                              max: kMaxSize,
+                              activeColor: kBottomContainerColor,
+                              inactiveColor: Colors.white,
+                              onChanged: (double newV) {
+                                setState(() {
+                                  sizeSelected = newV.round();
+                                });
+                              })
+                        ]))),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
                       child:
-                          InfoCard(cardColor: cardColor, child: Container())),
+                          InfoCard(cardColor: kCardColor, child: Container())),
                   Expanded(
-                      child: InfoCard(cardColor: cardColor, child: Container()))
+                      child:
+                          InfoCard(cardColor: kCardColor, child: Container()))
                 ],
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: kBottomContainerColor,
               margin: EdgeInsets.only(top: 10),
               width: double.infinity,
-              height: bottomContainerHeight,
+              height: kBottomContainerHeight,
               child: TextButton(
                 child: Text(
                   'CALCULATE PRICE',
