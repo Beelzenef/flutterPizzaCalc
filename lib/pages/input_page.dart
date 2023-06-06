@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_calculator/pages/result_page.dart';
+import 'package:pizza_calculator/price_calculator.dart';
 import 'package:pizza_calculator/widgets/circle_icon_button.dart';
 import '../widgets/flavour_option.dart';
 import '../widgets/info_card.dart';
 import '../../constants.dart';
-
-enum Flavours { Margarita, Pineapple }
 
 class InputPage extends StatefulWidget {
   @override
@@ -216,7 +216,26 @@ class _InputPageState extends State<InputPage> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 onPressed: () {
-                  print('Calculate price');
+                  if (flavourSelected != null) {
+                    double price =
+                        flavourSelected == Flavours.Margarita ? 11.5 : 13.5;
+
+                    PriceCalculator calc = PriceCalculator(
+                        sodas: sodasSelected,
+                        size: sizeSelected,
+                        initialPrice: price,
+                        people: peopleToShareSelected);
+
+                    String finalPrice = calc.calculatePrice();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResultPage(
+                                finalPrice: finalPrice,
+                              )),
+                    );
+                  }
                 },
               ),
             )

@@ -9,5 +9,7 @@ const kBottomContainerHeight = 80.0;
 const kMinSize = 25.0;
 const kMaxSize = 45.0;
 
+enum Flavours { Margarita, Pineapple }
+
 const kLabelTextStyle = TextStyle(fontSize: 18, color: Colors.grey);
 const kNumberTextStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
