@@ -216,7 +216,9 @@ class _InputPageState extends State<InputPage> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 onPressed: () {
-                  if (flavourSelected != null) {
+                  if (flavourSelected == null) {
+                    buildShowDialog(context);
+                  } else {
                     double price =
                         flavourSelected == Flavours.Margarita ? 11.5 : 13.5;
 
@@ -241,5 +243,21 @@ class _InputPageState extends State<InputPage> {
             )
           ],
         ));
+  }
+
+  Future<String> buildShowDialog(BuildContext context) {
+    return showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('No flavour selected'),
+        content: const Text('Please select a pizza flavour'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 }
