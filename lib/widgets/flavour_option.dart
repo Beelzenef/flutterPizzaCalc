@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class FlavourOption extends StatelessWidget {
-  const FlavourOption({@required this.icon, @required this.text});
+  const FlavourOption({required this.icon, required this.text});
 
   final String icon;
   final String text;

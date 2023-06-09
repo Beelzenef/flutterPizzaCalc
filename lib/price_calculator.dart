@@ -1,5 +1,9 @@
 class PriceCalculator {
-  PriceCalculator({this.sodas, this.people, this.size, this.initialPrice});
+  PriceCalculator(
+      {required this.sodas,
+      required this.people,
+      required this.size,
+      required this.initialPrice});
 
   final int sodas;
   final int people;

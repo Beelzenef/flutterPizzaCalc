@@ -4,7 +4,7 @@ import '../constants.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage({
-    @required this.finalPrice,
+    required this.finalPrice,
   });
 
   final String finalPrice;
@@ -33,6 +33,7 @@ class ResultPage extends StatelessWidget {
             flex: 5,
             child: InfoCard(
               cardColor: kCardColor,
+              behaviour: () {},
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

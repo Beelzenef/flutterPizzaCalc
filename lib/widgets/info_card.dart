@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard(
-      {@required this.cardColor, @required this.child, this.behaviour});
+      {required this.cardColor, required this.child, required this.behaviour});
 
   final Widget child;
   final Color cardColor;
-  final Function behaviour;
+  final void Function() behaviour;
 
   @override
   Widget build(BuildContext context) {

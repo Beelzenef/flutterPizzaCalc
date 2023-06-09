@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pizza_calculator/constants.dart';
 
 class CircleIconButton extends StatelessWidget {
-  CircleIconButton({@required this.icon, @required this.behaviour});
+  CircleIconButton({required this.icon, required this.behaviour});
 
   final IconData icon;
-  final Function behaviour;
+  final void Function() behaviour;
 
   @override
   Widget build(BuildContext context) {

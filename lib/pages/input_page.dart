@@ -12,7 +12,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Flavours flavourSelected;
+  late Flavours flavourSelected = Flavours.Margarita;
   int sizeSelected = 30;
   int sodasSelected = 0;
   int peopleToShareSelected = 1;
@@ -67,6 +67,7 @@ class _InputPageState extends State<InputPage> {
             Expanded(
                 child: InfoCard(
                     cardColor: kCardColor,
+                    behaviour: () {},
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -115,6 +116,7 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                       child: InfoCard(
                           cardColor: kCardColor,
+                          behaviour: () {},
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -159,6 +161,7 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                       child: InfoCard(
                           cardColor: kCardColor,
+                          behaviour: () {},
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -216,48 +219,28 @@ class _InputPageState extends State<InputPage> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 onPressed: () {
-                  if (flavourSelected == null) {
-                    buildShowDialog(context);
-                  } else {
-                    double price =
-                        flavourSelected == Flavours.Margarita ? 11.5 : 13.5;
+                  double price =
+                      flavourSelected == Flavours.Margarita ? 11.5 : 13.5;
 
-                    PriceCalculator calc = PriceCalculator(
-                        sodas: sodasSelected,
-                        size: sizeSelected,
-                        initialPrice: price,
-                        people: peopleToShareSelected);
+                  PriceCalculator calc = PriceCalculator(
+                      sodas: sodasSelected,
+                      size: sizeSelected,
+                      initialPrice: price,
+                      people: peopleToShareSelected);
 
-                    String finalPrice = calc.calculatePrice();
+                  String finalPrice = calc.calculatePrice();
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ResultPage(
-                                finalPrice: finalPrice,
-                              )),
-                    );
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                              finalPrice: finalPrice,
+                            )),
+                  );
                 },
               ),
             )
           ],
         ));
-  }
-
-  Future<String> buildShowDialog(BuildContext context) {
-    return showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text('No flavour selected'),
-        content: const Text('Please select a pizza flavour'),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.pop(context, 'OK'),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
   }
 }
