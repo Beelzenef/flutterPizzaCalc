@@ -1,21 +1,11 @@
-name: CI - Dart
-
+name: Flutter CI
 on:
   workflow_dispatch:
-
 jobs:
-  test:
-    name: Flutter CI
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
+      - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '3.0.0'
-      - run: flutter doctor
       - run: flutter pub get
-      - run: flutter analyze
+      - run: flutter build apk
